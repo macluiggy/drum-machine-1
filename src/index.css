@@ -42,3 +42,9 @@ body {
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
 }
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

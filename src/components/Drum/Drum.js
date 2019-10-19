@@ -32,14 +32,26 @@ function Drum({ e: { id, src, letter, key } }) {
 
   return (
     <Fragment>
-      <button
-        className="drum-pad"
-        id={id}
-        onClick={e => playDrumSound(e.target.firstChild.id)}
-      >
-        <audio src={src} data-key={key} className="clip" id={letter}></audio>
-        {letter}
-      </button>
+      {Switch ? (
+        <button
+          className="drum-pad"
+          id={id}
+          onClick={e => playDrumSound(e.target.firstChild.id)}
+        >
+          <audio src={src} data-key={key} className="clip" id={letter}></audio>
+          {letter}
+        </button>
+      ) : (
+        <button
+          className="drum-pad"
+          id={id}
+          onClick={e => playDrumSound(e.target.firstChild.id)}
+          disabled
+        >
+          <audio src={src} data-key={key} className="clip" id={letter}></audio>
+          {letter}
+        </button>
+      )}
     </Fragment>
   )
 }
