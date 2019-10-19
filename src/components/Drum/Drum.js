@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext } from "react"
+import React, { useEffect, useContext } from "react"
 import { AppContext } from "../App/App"
 
 function Drum({ e: { id, src, letter, key } }) {
@@ -31,14 +31,14 @@ function Drum({ e: { id, src, letter, key } }) {
   window.addEventListener("keydown", playDrumSoundFromKeyboard)
 
   return (
-    <Fragment>
+    <div className="drum-items">
       {Switch ? (
         <button
           className="drum-pad"
           id={id}
           onClick={e => playDrumSound(e.target.firstChild.id)}
         >
-          <audio src={src} data-key={key} className="clip" id={letter}></audio>
+          <audio src={src} className="clip" id={letter}></audio>
           {letter}
         </button>
       ) : (
@@ -48,11 +48,11 @@ function Drum({ e: { id, src, letter, key } }) {
           onClick={e => playDrumSound(e.target.firstChild.id)}
           disabled
         >
-          <audio src={src} data-key={key} className="clip" id={letter}></audio>
+          <audio src={src} className="clip" id={letter}></audio>
           {letter}
         </button>
       )}
-    </Fragment>
+    </div>
   )
 }
 

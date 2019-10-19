@@ -29,16 +29,22 @@ function Display() {
 
   return (
     <div className="item-container">
-      <div id="display">{drumAudio}</div>
+      <div id="display">{drumAudio.toUpperCase()}</div>
       <div id="drum-switch">
-        <button onClick={toogle}>{Switch ? "OFF" : "ON"}</button>
+        <button id={Switch ? `button-off` : `button-on`} onClick={toogle}>
+          {Switch ? "TURN OFF" : "TURN ON"}
+        </button>
       </div>
       <div id="audio-switch">
         {Switch ? (
-          <button onClick={toogleAudioList}>Change Audio List</button>
+          <button onClick={toogleAudioList} id="change-audio-button-on">
+            {audioTrack === audioData_1
+              ? `Playing audio track 1. Click here to change`
+              : `Playing audio track 2. Click here to change`}
+          </button>
         ) : (
-          <button onClick={toogleAudioList} disabled>
-            Change Audio List
+          <button id="change-audio-button-off">
+            Playing audio track 1. Click here to change
           </button>
         )}
       </div>
