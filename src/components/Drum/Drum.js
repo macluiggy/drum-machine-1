@@ -18,9 +18,9 @@ function Drum({ e: { id, src, letter } }) {
       if (!audioElement) return
       // console.log(audioElement)
       setDrumAudio(audioElement.parentNode.id)
-      audioElement.pause()
+      audioElement.volume = 0
       audioElement.currentTime = 0
-      audioElement.play()
+      audioElement.volume = 1
     }
   }
 
