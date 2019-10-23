@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  font-family: "Baloo Bhai", cursive;
 }
 
 #root {
@@ -8,6 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 #drum-machine {
   background: #134074;
@@ -97,4 +99,31 @@ button::-moz-focus-inner {
   padding: 10px;
   border: none;
   outline: none;
+}
+
+/* for device less than 700px */
+@media (max-width: 700px) {
+  #drum-machine {
+    height: 400px;
+    width: 400px;
+    flex-direction: column;
+  }
+
+  .item-container {
+    height: 200px;
+  }
+}
+/* for device less than 500px */
+@media (max-width: 500px) {
+  #drum-machine {
+    width: auto;
+  }
+
+  .item-container {
+    height: 200px;
+  }
+
+  button {
+    font-size: 12px;
+  }
 }

@@ -19,6 +19,9 @@ function App() {
 
   return (
     <AppContext.Provider value={appState}>
+      <div>
+        <h1>Drum machine</h1>
+      </div>
       <div id="drum-machine">
         <Display />
         <Drumlist data={audioTrack} />

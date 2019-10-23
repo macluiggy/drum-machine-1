@@ -1,19 +1,25 @@
 import React, { useEffect, useContext } from "react"
 import { AppContext } from "../App/App"
 
-function Drum({ e: { id, src, letter, key } }) {
+function Drum({ e: { id, src, letter } }) {
   const { setDrumAudio, Switch } = useContext(AppContext)
   let audioElement = null
+  let audioRef = React.createRef()
 
   useEffect(() => {
+    document.addEventListener("keydown", playDrumSoundFromKeyboard)
     return () =>
-      window.removeEventListener("keydown", playDrumSoundFromKeyboard)
+      document.removeEventListener("keydown", playDrumSoundFromKeyboard)
   })
 
-  function playDrumSound(elementId) {
+  function playDrumSound() {
     if (Switch) {
-      audioElement = document.getElementById(elementId)
+      audioElement = audioRef.current
+      if (!audioElement) return
+      console.log(audioElement)
       setDrumAudio(audioElement.parentNode.id)
+      audioElement.pause()
+      audioElement.currentTime = 0
       audioElement.play()
     }
   }
@@ -22,33 +28,26 @@ function Drum({ e: { id, src, letter, key } }) {
     if (Switch) {
       audioElement = document.getElementById(event.key.toUpperCase())
       if (!audioElement) return
-      console.log(audioElement)
       setDrumAudio(audioElement.parentNode.id)
-      audioElement.play()
+      audioElement.click()
     }
   }
-
-  window.addEventListener("keydown", playDrumSoundFromKeyboard)
 
   return (
     <div className="drum-items">
       {Switch ? (
-        <button
-          className="drum-pad"
-          id={id}
-          onClick={e => playDrumSound(e.target.firstChild.id)}
-        >
-          <audio src={src} className="clip" id={letter}></audio>
+        <button className="drum-pad" id={id} onClick={playDrumSound}>
+          <audio src={src} className="clip" id={letter} ref={audioRef}></audio>
           {letter}
         </button>
       ) : (
         <button
           className="drum-pad"
           id={id}
-          onClick={e => playDrumSound(e.target.firstChild.id)}
+          // onClick={e => playDrumSound(e.target.firstChild.id)}
           disabled
         >
-          <audio src={src} className="clip" id={letter}></audio>
+          {/* <audio src={src} className="clip" id={letter}></audio> */}
           {letter}
         </button>
       )}
