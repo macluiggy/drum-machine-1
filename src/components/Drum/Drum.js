@@ -21,6 +21,7 @@ function Drum({ e: { id, src, letter } }) {
       audioElement.volume = 0
       audioElement.currentTime = 0
       audioElement.volume = 1
+      audioElement.play()
     }
   }
 
