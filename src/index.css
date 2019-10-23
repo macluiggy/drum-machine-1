@@ -110,7 +110,7 @@ button::-moz-focus-inner {
   }
 
   .item-container {
-    height: 200px;
+    height: 400px;
   }
 }
 /* for device less than 500px */
@@ -120,10 +120,17 @@ button::-moz-focus-inner {
   }
 
   .item-container {
-    height: 200px;
+    height: 190px;
   }
 
   button {
     font-size: 12px;
+  }
+}
+
+@media (orientation: landscape) {
+  html,
+  body {
+    height: auto;
   }
 }
