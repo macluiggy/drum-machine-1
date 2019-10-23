@@ -16,7 +16,7 @@ function Drum({ e: { id, src, letter } }) {
     if (Switch) {
       audioElement = audioRef.current
       if (!audioElement) return
-      console.log(audioElement)
+      // console.log(audioElement)
       setDrumAudio(audioElement.parentNode.id)
       audioElement.pause()
       audioElement.currentTime = 0
