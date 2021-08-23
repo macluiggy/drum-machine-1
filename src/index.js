@@ -2,5 +2,5 @@ import React from "react"
 import ReactDOM from "react-dom"
 import "./index.css"
 import App from "../src/components/App/App"
-//hola, solo estoy aprendiendo a usar git para contribuir, no tienes que fisonar estos cambioss
+//hola, solo estoy aprendiendo a usar git para contribuir, no tienes que fisonar estos cambiosss
 ReactDOM.render(<App />, document.getElementById("root"))
